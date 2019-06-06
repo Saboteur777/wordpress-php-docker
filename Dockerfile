@@ -4,9 +4,11 @@ MAINTAINER Otto Radics <otto@webmenedzser.hu>
 
 # Install WordPress requirements
 RUN apk add --no-cache --virtual .build-deps \
+      libxml2-dev \
       shadow \
       autoconf \
       g++ \
+      libpng-dev \
       make && \
     apk add --no-cache \
       imagemagick-dev \
@@ -15,7 +17,7 @@ RUN apk add --no-cache --virtual .build-deps \
       libzip-dev \
       mariadb-client && \
     pecl install imagick-beta && \
-    docker-php-ext-install intl pdo_mysql mysqli zip && \
+    docker-php-ext-install gd intl pdo_mysql soap zip && \
     docker-php-ext-enable imagick opcache && \
     apk del .build-deps
 
