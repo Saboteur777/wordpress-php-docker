@@ -17,7 +17,7 @@ RUN apk add --no-cache --virtual .build-deps \
       libzip-dev \
       mariadb-client && \
     pecl install imagick-beta && \
-    docker-php-ext-install gd intl mysqli pdo_mysql soap zip && \
+    docker-php-ext-install bcmath exif gd intl mysqli pdo_mysql soap zip && \
     docker-php-ext-enable imagick opcache && \
     apk del .build-deps
 
